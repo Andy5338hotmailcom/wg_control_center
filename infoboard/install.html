@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <title>安装软件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background: #e9e4f5;
+            color: #1f1035;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 620px;
+            background: #dcd3ee;
+            border-radius: 12px;
+            padding: 32px;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+        .tip-notice {
+            color:#4b3b66;
+            margin:12px 0 20px 0;
+            font-size:15px;
+        }
+        .status-item {
+            padding: 16px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: #b8a8e3;
+        }
+        .status-item p {
+            margin-bottom: 10px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .btn-install {
+            background: #7c3aed;
+            color: white;
+        }
+        .btn-open {
+            background: #22c55e;
+            color: white;
+        }
+        .ok { color: #16a34a; }
+        .warn { color: #9333ea; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>艺术社团展板 软件安装</h1>
+    <p class="tip-notice">如果已经安装，可以直接使用。</p>
+    <div class="status-item">
+        <p id="appTip">等待浏览器准备安装功能……如果时间太长，请使用其他游览器打开http://127.0.0.1:8550/install.html</p>
+        <button class="btn-install" id="installBtn" disabled>安装PWA软件</button>
+    </div>
+    <div class="btn-group">
+        <button class="btn-open" onclick="openAppPage()">直接打开软件</button>
+    </div>
+</div>
+
+<script src="/product.js"></script>
+<script>
+let deferredPrompt;
+
+//兜底配置
+if (typeof productConfig === 'undefined') {
+    window.productConfig = {
+        productName: "艺术社团展板"
+    };
+}
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    document.getElementById("appTip").innerText = `可以安装 ${productConfig.productName}`;
+    document.getElementById("installBtn").disabled = false;
+});
+
+window.addEventListener('appinstalled', () => {
+    document.getElementById("appTip").innerHTML = `<span class="ok">✅ 已经安装成功！</span>`;
+    deferredPrompt = null;
+});
+
+document.getElementById("installBtn").addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    await deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+        document.getElementById("appTip").innerHTML = `<span class="ok">✅ 安装已接受</span>`;
+    } else {
+        document.getElementById("appTip").innerHTML = `<span class="warn">已取消安装</span>`;
+    }
+    deferredPrompt = null;
+});
+
+function openAppPage(){
+    location.href = "/index.html";
+}
+</script>
+</body>
+</html>

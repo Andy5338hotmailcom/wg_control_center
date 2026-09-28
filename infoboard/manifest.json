@@ -1,0 +1,16 @@
+{
+  "name":"艺术社团展板",
+  "short_name":"艺术社团展板",
+  "start_url":"/launch.html",
+  "version": "16.1.0",
+  "display":"standalone",
+  "background_color":"#ffffff",
+  "theme_color":"#6C63FF",
+  "icons":[
+    {
+        "src":"./ico.png",
+        "sizes":"150x150",
+        "type":"image/png"
+    }
+  ]
+}

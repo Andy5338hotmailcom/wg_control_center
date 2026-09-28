@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <title>控制台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background: #e9e4f5;
+            color: #1f1035;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+        /* 左侧服务列表 */
+        .sidebar {
+            width: 260px;
+            background: #dcd3ee;
+            padding:24px 12px;
+            border-right:1px solid #c9bde8;
+        }
+        .sidebar h2{
+            font-size:20px;
+            margin-bottom:20px;
+            padding-left:8px;
+        }
+        .service-item{
+            padding:12px 10px;
+            border-radius:8px;
+            cursor:pointer;
+            margin-bottom:8px;
+        }
+        .service-item:hover{
+            background:#b8a8e3;
+        }
+        .service-item.active{
+            background:#7c3aed;
+            color:#fff;
+        }
+        /* 右侧主区域 */
+        .main-area{
+            flex:1;
+            display:flex;
+            flex-direction:column;
+        }
+        .control-bar{
+            padding:14px 20px;
+            background:#dcd3ee;
+            display:flex;
+            gap:12px;
+            align-items:center;
+        }
+        .control-bar button{
+            padding:9px 16px;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+            font-size:15px;
+        }
+        .btn-install{
+            background:#a855f7;
+            color:white;
+        }
+        .btn-open{
+            background:#22c55e;
+            color:white;
+        }
+        button:disabled{
+            opacity:0.4;
+            cursor:not-allowed;
+        }
+        .iframe-wrap{
+            flex:1;
+        }
+        iframe{
+            width:100%;
+            height:100%;
+            border:none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 左侧服务列表 -->
+    <div class="sidebar">
+        <h2>服务列表</h2>
+        <div id="serviceList"></div>
+    </div>
+
+    <!-- 右侧控制台区域 -->
+    <div class="main-area">
+        <div class="control-bar">
+            <span id="serviceName">请在左侧选择服务</span>
+            <button class="btn-install" id="btnInstall" onclick="goInstall()" disabled>安装软件</button>
+            <button class="btn-open" id="btnOpen" onclick="openApp()" disabled>打开软件</button>
+        </div>
+        <div class="iframe-wrap">
+            <iframe id="consoleIframe" src=""></iframe>
+        </div>
+    </div>
+
+<script src="/product.js"></script>
+<script>
+//兜底productConfig
+if (typeof productConfig === 'undefined') {
+    window.productConfig = {
+        productName: "艺术社团展板",
+        services: [
+            {
+                name: "服务管理台",
+                port: 8549,
+                indexUrl: "http://127.0.0.1:8549/index.html",
+                installUrl: "http://127.0.0.1:8549/install.html"
+            },
+            {
+                name: "艺术社团展板",
+                port: 8550,
+                indexUrl: "http://127.0.0.1:8550/index.html",
+                installUrl: "http://127.0.0.1:8550/install.html"
+            }
+        ]
+    };
+}
+
+// OOBE校验，未完成跳转向导
+if(localStorage.getItem("oobe_finished") !== "true"){
+    location.href = "/oobe.html";
+}
+
+let currentService = null;
+const serviceListDom = document.getElementById("serviceList");
+const btnInstall = document.getElementById("btnInstall");
+const btnOpen = document.getElementById("btnOpen");
+
+// 动态渲染服务列表
+productConfig.services.forEach(service=>{
+    const div = document.createElement("div");
+    div.className = "service-item";
+    div.innerText = `${service.name}(${service.port})`;
+    div.onclick = ()=>selectService(service, div);
+    serviceListDom.appendChild(div);
+})
+
+// 选中服务
+function selectService(service, domEl){
+    currentService = service;
+    // 清除全部active
+    document.querySelectorAll(".service-item").forEach(item=>item.classList.remove("active"));
+    domEl.classList.add("active");
+
+    document.getElementById("serviceName").innerText = `当前：${service.name}(${service.port})`;
+    // iframe加载对应页面
+    document.getElementById("consoleIframe").src = service.indexUrl;
+    // 启用按钮
+    btnInstall.disabled = false;
+    btnOpen.disabled = false;
+}
+
+// 跳转安装页面 install.html
+function goInstall(){
+    if(!currentService) return;
+    window.open(currentService.installUrl,"_blank");
+}
+// 新标签打开软件主页
+function openApp(){
+    if(!currentService) return;
+    window.open(currentService.indexUrl,"_blank");
+}
+</script>
+</body>
+</html>

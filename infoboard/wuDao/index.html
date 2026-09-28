@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>舞蹈团</title>
+    <script src="..\script.html"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4158D0',
+                        secondary: '#C850C0',
+                        accent: '#FFCC70',
+                        dark: '#2D3748',
+                        light: '#F7FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .transition-all-300 {
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+    <style>
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            color: #333;
+        }
+    </style>
+</head>
+<body class="font-sans text-light">
+    <!-- 音乐播放器 -->
+    <audio id="backgroundMusic" loop>
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 音乐控制按钮 -->
+    <div class="music-control">
+        <div class="music-btn" id="musicToggle">
+            <i class="fa fa-volume-up text-2xl"></i>
+        </div>
+    </div>
+
+
+
+    <!-- 首页 -->
+    <section id="home" class="py-16 flex items-center justify-center">
+        <div class="container mx-auto px-4 text-center animate-fade-in">
+            <h1 class="text-6xl md:text-8xl font-bold mb-4 text-gray-900">上海市进才中学北校“星梦”舞蹈团</h1>
+            <p class="text-xl md:text-2xl mb-0 max-w-3xl mx-auto text-black">
+                上海市进才中学北校“星梦”舞蹈团是学校美育教育体系的核心组成板块，是校园艺术特色建设的标杆品牌。舞蹈团自成立以来，始终以学校“知天知地知探究、会演会奏会怡情、能动能静能健体、为人为学为成才”的人才培养方略为根本遵循，锚定“以舞育人、以美润心”的教育初心，深耕校园舞蹈教育沃土，为学生搭建艺术成长与梦想绽放的优质平台。“星梦”之名，寓意每一位团员都心怀如璀璨星辰般闪耀的舞蹈梦想，在专业训练与舞台实践中奋力逐梦，绽放独属于青春的耀眼光芒。
+            </p>
+            <p class="text-xl md:text-2xl mb-0 max-w-3xl mx-auto text-black">
+                作为2025-2027年度上海市学校艺术“一条龙”人才培养体系布局单位，学校舞蹈团与上海市进才中学构建了完整的初高中舞蹈特色人才培养衔接体系，形成了“梯队化建设、专业化教学、系统化发展”的成熟育人模式。依托学校完善的艺术教育保障体系，舞蹈团拥有专属的标准化舞蹈训练场馆、健全的社团管理制度与专项经费支持，同时联动上海戏剧学院、上海市舞蹈家协会、市级专业舞蹈团体等优质校外资源，聘请资深专业舞蹈教师驻团授课，打造了一支师资专业、梯队完善、实力突出的校园舞蹈团队。
+            </p>
+            <p class="text-xl md:text-2xl mb-0 max-w-3xl mx-auto text-black">
+                舞蹈团始终坚持“普及与提升并重、技能与素养同修”的教育理念，将舞蹈艺术教育与学生综合素养培育、审美能力提升深度融合。在日常教学中，构建了“基础形体训练+舞蹈技法打磨+剧目创作排演+舞蹈文化研学”的四维课程体系，不仅注重学生舞蹈基本功、肢体表现力、舞台感染力的专业训练，更强调对舞蹈艺术内涵、文化背景、审美价值的理解与感悟，引导学生在肢体表达中感受艺术之美、涵养审美情操、锤炼意志品格。同时，舞蹈团建立了完善的人才梯队培养机制，从预备年级到初三年级分层教学、系统培养，为不同基础、不同学段的学生搭建了全周期的艺术成长平台，也为高中阶段舞蹈特色人才的持续输送奠定了坚实基础。 
+            </p>
+            <p class="text-xl md:text-2xl mb-0 max-w-3xl mx-auto text-black">
+                在艺术实践方面，舞蹈团积极搭建多元展示平台，常年活跃在校园与区级、市级艺术舞台。作为校园美育文化建设的核心力量，舞蹈团常态化参与学校一年一度的艺术节、六一文艺汇演、校园文化节、开学典礼、毕业典礼等各类品牌校园活动，用兼具思想性与艺术性的舞蹈作品点亮校园文化生活，成为校园里一道靓丽的青春风景线。同时，舞蹈团多次代表学校参加浦东新区学生艺术节、上海市中小学生艺术展演、上海市校园文化新人榜等专业赛事与大型交流活动，凭借扎实的专业功底、富有感染力的舞台表现与精益求精的创作态度，屡获一、二等奖等优异佳绩，在更高的舞台上展现了进北学子的艺术风采与青春活力。
+            </p>
+            <p class="text-xl md:text-2xl mb-0 max-w-3xl mx-auto text-black">
+                面向未来，上海市进才中学北校“星梦”舞蹈团将继续坚守美育初心，深耕校园舞蹈教育领域，以“一条龙”人才培养体系建设为核心抓手，不断完善教学体系、打磨精品剧目、提升育人水平，努力打造区域内有影响力、有特色的校园舞蹈品牌。舞蹈团将继续以青春之姿、以热爱之名，在舞蹈艺术的道路上持续探索，让每一位心怀梦想的少年都能在舞台上绽放璀璨华彩，培养更多兼具审美素养、艺术才华与家国情怀的新时代青少年。
+            </p>
+        </div>
+    </section>
+
+    <!-- 社团介绍 
+    <section id="about" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">赛事佳绩</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg leading-relaxed text-black">
+                        近五年蝉联浦东新区学生艺术节合唱比赛一等奖
+                    </p>
+                    <p class="text-1g leading-relaxed text-black">
+                        2021-2025 年包揽新区第十七至二十一届艺术节校队合唱、班队合唱、表演唱等多个一等奖
+                    </p>
+                    <p class="text-lg leading-relaxed text-black">
+                        学校连续获评艺术节优秀组织奖
+                    </p>
+                    <p class="text-lg leading-relaxed text-black">
+                        2023 年斩获全国第七届中小学生艺术展演中学组全国二等奖、上海市一等奖（为上海中学组本届赛事最高奖）
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                        <img src="jiang (1).jpg"
+                             alt="奖状照片1" class="w-full h-auto">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                        <img src="jiang (2).jpg"
+                             alt="奖状照片2" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    -->
+
+    <!-- 老师介绍 
+    <section id="teacher" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">老师介绍</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                    <img src="teacher1.jpg"
+                         alt="老师照片" class="w-full h-auto">
+                </div>
+                <div class="rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                    <img src="teacher2.jpg"
+                         alt="老师照片2" class="w-full h-auto">
+                </div>
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-accent">指导老师</h3>
+                    <p class="text-lg leading-relaxed text-black">
+                        构建校内骨干+校外名师双师体系，常任指挥李迅（武汉音乐学院）、钢琴艺术指导周昱（意大利巴里音乐学院）为核心校内师资，均为上海音乐家协会会员；长期邀请风筝音乐中心陈涛、朱斯珂等名师，及上海音乐学院王燕教授等顶尖合唱指挥大师进校指导，专业水准稳居前列。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- 精彩照片 -->
+    <section id="photos" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">精彩照片</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="photo-card rounded-lg overflow-hidden shadow-lg">
+                    <img src="pic (1).jpg"
+                         alt="精彩照片1" class="w-full h-64 object-cover">
+                    <div class="photo-overlay">
+                        <i class="fa fa-search-plus text-4xl"></i>
+                    </div>
+                </div>
+                <div class="photo-card rounded-lg overflow-hidden shadow-lg">
+                    <img src="pic (2).jpg"
+                         alt="精彩照片2" class="w-full h-64 object-cover">
+                    <div class="photo-overlay">
+                        <i class="fa fa-search-plus text-4xl"></i>
+                    </div>
+                </div>
+                <div class="photo-card rounded-lg overflow-hidden shadow-lg">
+                    <img src="pic (3).jpg"
+                         alt="精彩照片3" class="w-full h-64 object-cover">
+                    <div class="photo-overlay">
+                        <i class="fa fa-search-plus text-4xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">介绍视频</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="video-box">
+                    <video width="800" controls poster="cover.png">
+                        <source src="about.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">演出视频</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="video-box">
+                    <video width="800" controls poster="cover.png">
+                        <source src="show1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-box">
+                    <video width="800" controls poster="cover.png">
+                        <source src="show2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-box">
+                    <video width="800" controls poster="cover.png">
+                        <source src="show3.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-8 bg-white bg-opacity-90">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4 text-gray-700">2025级初一19班郭宸好制作。保留全部权力。已经成功激活本产品。</p>
+            <a href="../index.html"
+               class="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xl py-4 px-6 rounded-xl shadow-lg hover:scale-105 transition-all">
+                返回
+            </a>
+        </div>
+    </footer>
+
+    <!-- 图片查看模态框 -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function () {
+
+
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+
+                        // 如果是移动端，点击后关闭菜单
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+
+            // 滚动显示动画
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // 图片查看功能
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalClose = document.querySelector('.modal-close');
+            const photoCards = document.querySelectorAll('.photo-card');
+
+            photoCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const imgSrc = this.querySelector('img').src;
+                    modal.style.display = 'flex';
+                    modalImg.src = imgSrc;
+                    document.body.style.overflow = 'hidden'; // 防止背景滚动
+                });
+            });
+
+            modalClose.addEventListener('click', function () {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // 恢复背景滚动
+            });
+
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // 音乐控制
+            const music = document.getElementById('backgroundMusic');
+            const musicToggle = document.getElementById('musicToggle');
+            const musicIcon = musicToggle.querySelector('i');
+
+            // 检查用户是否之前有设置过音乐偏好
+            const musicPreference = localStorage.getItem('musicPreference');
+            if (musicPreference === 'true') {
+                music.play().catch(e => console.log('无法自动播放音乐:', e));
+                musicIcon.classList.remove('fa-volume-off');
+                musicIcon.classList.add('fa-volume-up');
+            } else {
+                musicIcon.classList.remove('fa-volume-up');
+                musicIcon.classList.add('fa-volume-off');
+            }
+
+            musicToggle.addEventListener('click', function () {
+                if (music.paused) {
+                    music.play().catch(e => console.log('无法播放音乐:', e));
+                    musicIcon.classList.remove('fa-volume-off');
+                    musicIcon.classList.add('fa-volume-up');
+                    localStorage.setItem('musicPreference', 'true');
+                } else {
+                    music.pause();
+                    musicIcon.classList.remove('fa-volume-up');
+                    musicIcon.classList.add('fa-volume-off');
+                    localStorage.setItem('musicPreference', 'false');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

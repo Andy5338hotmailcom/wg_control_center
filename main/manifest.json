@@ -1,0 +1,16 @@
+{
+  "name":"管理台",
+  "short_name":"管理台",
+  "start_url":"/index.html",
+  "version": "1.1.1",
+  "display":"standalone",
+  "background_color":"#ffffff",
+  "theme_color":"#6C63FF",
+  "icons":[
+    {
+        "src":"./ico.png",
+        "sizes":"150x150",
+        "type":"image/png"
+    }
+  ]
+}

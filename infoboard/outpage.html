@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>艺术社团展板-preview14.4.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* 整体布局 */
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 顶部标题栏 */
+        .top-bar {
+            height: 50px;
+            background: #d7c8ff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            color: #5a4b9b;
+            font-size: 16px;
+        }
+
+        /* 刷新按钮 */
+        #refreshBtn,#BtnAbout,#BtnHeChang {
+            background: #5a4b9b;
+            color: #fff;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #refreshBtn:hover,#BtnAbout:hover,#BtnHeChang:hover {
+            background: #473b7c;
+        }
+        
+        /* 内嵌网页区域 */
+        #iframeContent {
+            flex: 1;
+            border: none;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 顶部栏 -->
+    <div class="top-bar">
+        <span>艺术类社团向导</span>
+        <button id="BtnHeChang">合唱团</button>
+        <button id="BtnAbout">介绍</button>
+        <button id="refreshBtn">主页</button>
+    </div>
+
+    <!-- 内嵌 index.html -->
+    <iframe id="iframeContent" src="index.html"></iframe>
+</div>
+
+<script>
+    // 刷新按钮功能
+    document.getElementById('refreshBtn').onclick = function() {
+        document.getElementById('iframeContent').src = "index.html";
+    };
+    document.getElementById('BtnHeChang').onclick = function() {
+        document.getElementById('iframeContent').src = "./heChang/index.html";
+    };
+    document.getElementById('BtnAbout').onclick = function() {
+        document.getElementById('iframeContent').src = "./about/index.html";
+    };
+</script>
+
+</body>
+</html>

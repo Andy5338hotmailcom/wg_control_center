@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上海市进才中学北校弦乐团</title>
+    <script src="..\script.html"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4158D0',
+                        secondary: '#C850C0',
+                        accent: '#FFCC70',
+                        dark: '#2D3748',
+                        light: '#F7FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                        animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .transition-all-300 {
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+    <style>
+        body {
+        background-image: url('background.png');
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        min-height: 100vh;
+        color: #333;
+        }
+    </style>
+</head>
+<body class="font-sans text-light">
+    <!-- 音乐播放器 -->
+    <audio id="backgroundMusic" loop>
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 音乐控制按钮 -->
+    <div class="music-control">
+        <div class="music-btn" id="musicToggle">
+            <i class="fa fa-volume-up text-2xl"></i>
+        </div>
+    </div>
+
+
+
+    <!-- 首页 -->
+    <section id="home" class="py-16 flex items-center justify-center">
+        <div class="container mx-auto px-4 text-center animate-fade-in">
+            <h1 class="text-6xl md:text-8xl font-bold mb-4 text-gray-900">上海市进才中学北校弦乐团</h1>
+            <p class="text-xl md:text-2xl mb-0 max-w-3xl mx-auto text-black">
+                我校弦乐社团是校园文化中一抹灵动的亮色，成立于2014年，每年吸引着 40 多名名热爱音乐的同学加入其中。在这里，小提琴的悠扬、大提琴的醇厚交织共鸣，构成了校园里最动人的旋律。<br>
+                社团以 “活跃校园文化、提升合奏能力、点燃音乐热情” 为核心宗旨，通过系统的排练与专业指导，让同学们在协作中精进技艺，在交流中感受音乐的魅力。大家从生疏的独奏到默契的合奏，不仅提升了乐器演奏水平，更培养了团队协作意识与艺术审美素养，学校还会组织同学们一起外出欣赏音乐会等活动，让音乐学习成为充满乐趣的成长旅程。<br>
+                作为学校的音乐特色名片，弦乐社团屡获佳绩，在区级艺术展演中多次斩获一等奖，用实力彰显了社团的专业水准。此外，社团还积极走出校园，不定期开展弦乐音乐会、参与社区公益演出、学校文艺汇演等各类活动，用流淌的弦音传递温暖与美好，让更多人感受古典音乐的感染力，成为传播艺术魅力的重要纽带。<br>
+                弦乐社团，既是音乐特长同学们的成长乐园，也是校园文化的鲜活载体，用悠扬乐声书写着青春与热爱的篇章。
+            </p>
+        </div>
+    </section>
+
+    <!-- 社团介绍 -->
+    <section id="about" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">赛事佳绩</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg leading-relaxed text-black">
+                        2023年浦东新区第十九届学生艺术节艺术展演活动/西乐专场(合奏) 初中组一等奖
+                    </p>
+                    <p class="text-1g leading-relaxed text-black">
+                        2024年浦东新区第二十届学生艺术节艺术展演活动/西乐专场(合奏) 初中组一等奖
+                    </p>
+                    <p class="text-lg leading-relaxed text-black">
+                        2025年浦东新区第二十一届学生艺术节艺术展演活动/西乐专场(合奏) 初中组一等奖
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                        <img src="jiang (1).jpg"
+                             alt="奖状照片1" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精彩照片 -->
+    <section id="photos" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">精彩照片</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="photo-card rounded-lg overflow-hidden shadow-lg">
+                    <img src="pic (1).jpg"
+                         alt="精彩照片1" class="w-full h-64 object-cover">
+                    <div class="photo-overlay">
+                        <i class="fa fa-search-plus text-4xl"></i>
+                    </div>
+                </div>
+                <div class="photo-card rounded-lg overflow-hidden shadow-lg">
+                    <img src="pic (2).jpg"
+                         alt="精彩照片2" class="w-full h-64 object-cover">
+                    <div class="photo-overlay">
+                        <i class="fa fa-search-plus text-4xl"></i>
+                    </div>
+                </div>
+                <div class="photo-card rounded-lg overflow-hidden shadow-lg">
+                    <img src="pic (3).jpg"
+                         alt="精彩照片3" class="w-full h-64 object-cover">
+                    <div class="photo-overlay">
+                        <i class="fa fa-search-plus text-4xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">介绍视频</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="video-box">
+                    <video width="800" controls>
+                        <source src="about.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">演出视频</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="video-box">
+                    <video width="800" controls>
+                        <source src="show2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-box">
+                    <video width="800" controls>
+                        <source src="show3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-box">
+                    <video width="800" controls poster="cover4.png">
+                        <source src="show4.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-8 bg-white bg-opacity-90">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4 text-gray-700">2025级初一19班郭宸好制作。保留全部权力。已经成功激活本产品。</p>
+            <a href="../index.html"
+               class="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xl py-4 px-6 rounded-xl shadow-lg hover:scale-105 transition-all">
+                返回
+            </a>
+        </div>
+    </footer>
+
+    <!-- 图片查看模态框 -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function () {
+
+
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+
+                        // 如果是移动端，点击后关闭菜单
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+
+            // 滚动显示动画
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // 图片查看功能
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalClose = document.querySelector('.modal-close');
+            const photoCards = document.querySelectorAll('.photo-card');
+
+            photoCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const imgSrc = this.querySelector('img').src;
+                    modal.style.display = 'flex';
+                    modalImg.src = imgSrc;
+                    document.body.style.overflow = 'hidden'; // 防止背景滚动
+                });
+            });
+
+            modalClose.addEventListener('click', function () {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // 恢复背景滚动
+            });
+
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            
+            
+            // 音乐控制
+            const music = document.getElementById('backgroundMusic');
+            const musicToggle = document.getElementById('musicToggle');
+            const musicIcon = musicToggle.querySelector('i');
+
+            // 检查用户是否之前有设置过音乐偏好
+            const musicPreference = localStorage.getItem('musicPreference');
+            if (musicPreference === 'true') {
+                music.play().catch(e => console.log('无法自动播放音乐:', e));
+                musicIcon.classList.remove('fa-volume-off');
+                musicIcon.classList.add('fa-volume-up');
+            } else {
+                musicIcon.classList.remove('fa-volume-up');
+                musicIcon.classList.add('fa-volume-off');
+            }
+
+            musicToggle.addEventListener('click', function () {
+                if (music.paused) {
+                    music.play().catch(e => console.log('无法播放音乐:', e));
+                    musicIcon.classList.remove('fa-volume-off');
+                    musicIcon.classList.add('fa-volume-up');
+                    localStorage.setItem('musicPreference', 'true');
+                } else {
+                    music.pause();
+                    musicIcon.classList.remove('fa-volume-up');
+                    musicIcon.classList.add('fa-volume-off');
+                    localStorage.setItem('musicPreference', 'false');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <title>OOBE - 初始化向导</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background: #e9e4f5;
+            color: #1f1035;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 620px;
+            padding: 32px;
+        }
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+        p {
+            font-size: 16px;
+            color: #4b3b66;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .tip-notice {
+            color:#6b5b88;
+            margin:12px 0 20px 0;
+            font-size:15px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .btn-next {
+            background: #7c3aed;
+            color: white;
+        }
+        .btn-open {
+            background: #22c55e;
+            color: white;
+            margin-top: 8px;
+        }
+        .btn-install {
+            background: #a855f7;
+            color: white;
+            margin-top: 8px;
+        }
+        .status-item {
+            padding: 16px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: #dcd3ee;
+        }
+        .status-item p {
+            margin-bottom: 10px;
+        }
+        .ok { color: #16a34a; }
+        .fail { color: #dc2626; }
+        .warn { color: #9333ea; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 步骤1 欢迎页 -->
+    <div class="step active" id="step1">
+        <h1>欢迎使用新的服务控制台</h1>
+        <p>欢迎使用 Wildgoose · 控制台。<br>
+        点下一步继续，开始安装其他软件。</p>
+        <div class="btn-group">
+            <button class="btn-next" onclick="nextStep()">下一步</button>
+        </div>
+    </div>
+
+    <!-- 步骤2 应用安装 -->
+    <div class="step" id="step2">
+        <h1>应用安装</h1>
+        <p class="tip-notice">如果你之前安装过，您不需要再次安装</p>
+        <div id="serviceList"></div>
+        <div class="btn-group">
+            <button class="btn-next" id="btnSkipInstall" onclick="nextStep()">跳过</button>
+        </div>
+    </div>
+
+    <!-- 步骤3 完成页 -->
+    <div class="step" id="step3">
+        <h1>初始化完成</h1>
+        <p>系统初始化已经完成。</p>
+        <div class="btn-group">
+            <button class="btn-next" onclick="finishOOBE()">完成</button>
+        </div>
+    </div>
+</div>
+
+<script src="/product.js"></script>
+<script>
+let currentStep = 1;
+let mainAppInstalled = false;
+let deferredPromptMain = null;
+let services = productConfig.services;
+let mainService = services[0]; // 第一个服务固定为主管理台
+const serviceListEl = document.getElementById("serviceList");
+
+// 动态渲染所有服务卡片
+function renderServiceCards() {
+    serviceListEl.innerHTML = "";
+    services.forEach((svc, idx) => {
+        const isMain = idx === 0;
+        const div = document.createElement("div");
+        div.className = "status-item";
+        div.innerHTML = `
+            <p id="tip-${idx}">${isMain ? "🔧" : "📦"} ${svc.name}(${svc.port})：${isMain ? "等待浏览器准备安装功能……" : `<span class="warn">请先完成管理台安装</span>`}</p>
+            <button class="btn-open" id="btnOpen-${idx}" style="display:none" onclick="openService(${idx})">打开${svc.name}</button>
+            <button class="btn-install" id="btnInstall-${idx}" ${isMain ? "disabled" : 'style="display:none"'} onclick="goInstallService(${idx})">安装${svc.name}</button>
+        `;
+        serviceListEl.appendChild(div);
+    })
+}
+
+// ========== PWA 事件监听（仅主管理台） ==========
+window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPromptMain = e;
+    const tip = document.getElementById(`tip-0`);
+    const btnInstall = document.getElementById(`btnInstall-0`);
+    btnInstall.disabled = false;
+    tip.innerText = `🔧 ${mainService.name}(${mainService.port})：✅ 可以安装，点击按钮安装到本机`;
+});
+
+window.addEventListener("appinstalled", () => {
+    mainAppInstalled = true;
+    const tip = document.getElementById(`tip-0`);
+    tip.innerHTML = `🔧 ${mainService.name}(${mainService.port})：<span class='ok'>🎉 安装成功</span>`;
+    document.getElementById(`btnInstall-0`).style.display = "none";
+    document.getElementById(`btnOpen-0`).style.display = "block";
+    deferredPromptMain = null;
+    unlockAllSubServices();
+});
+
+// 解锁全部子服务（除第0项管理台）
+function unlockAllSubServices() {
+    for(let i=1; i<services.length; i++){
+        const tip = document.getElementById(`tip-${i}`);
+        const btnOpen = document.getElementById(`btnOpen-${i}`);
+        const btnInstall = document.getElementById(`btnInstall-${i}`);
+        tip.innerHTML = `📦 ${services[i].name}(${services[i].port})：<span class='ok'>可安装</span>`;
+        btnOpen.style.display = "block";
+        btnInstall.style.display = "block";
+    }
+}
+
+// ========== 步骤切换 ==========
+function showStep(num) {
+    document.querySelectorAll(".step").forEach(el => el.classList.remove("active"));
+    document.getElementById("step" + num).classList.add("active");
+    currentStep = num;
+    if (num === 2) checkAllAppInstall();
+}
+
+function nextStep() {
+    showStep(currentStep + 1);
+}
+
+// ========== 检测应用状态 ==========
+function checkAllAppInstall() {
+    // PWA独立模式 = 主管理台已安装
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        mainAppInstalled = true;
+        const tip = document.getElementById(`tip-0`);
+        tip.innerHTML = `🔧 ${mainService.name}(${mainService.port})：<span class='ok'>✅ 已安装</span>`;
+        document.getElementById(`btnInstall-0`).style.display = "none";
+        document.getElementById(`btnOpen-0`).style.display = "block";
+        unlockAllSubServices();
+    }
+}
+
+// 打开对应服务
+function openService(idx) {
+    const svc = services[idx];
+    window.open(svc.indexUrl, "_blank");
+}
+
+// 跳转到安装页面
+async function goInstallService(idx) {
+    const svc = services[idx];
+    if(idx === 0){
+        // 主管理台PWA安装
+        if (!deferredPromptMain) {
+            const tip = document.getElementById(`tip-0`);
+            tip.innerHTML = `🔧 ${svc.name}(${svc.port})：<span class='fail'>当前环境不支持安装</span>`;
+            return;
+        }
+        await deferredPromptMain.prompt();
+        const result = await deferredPromptMain.userChoice;
+        if (result.outcome === "accepted") {
+            // appinstalled事件自动处理
+        } else {
+            const tip = document.getElementById(`tip-0`);
+            tip.innerHTML = `🔧 ${svc.name}(${svc.port})：<span class='warn'>用户取消安装</span>`;
+            deferredPromptMain = null;
+        }
+    }else{
+        // 子应用直接跳转安装页面
+        window.open(svc.installUrl, "_blank");
+    }
+}
+
+// ========== 完成 ==========
+function finishOOBE() {
+    localStorage.setItem("oobe_finished", "true");
+    location.href = "/index.html";
+}
+
+// 初始化
+renderServiceCards();
+showStep(1);
+</script>
+</body>
+</html>

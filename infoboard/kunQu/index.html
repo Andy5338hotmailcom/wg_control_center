@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上海市进才中学北校昆曲团</title>
+    <script src="..\script.html"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4158D0',
+                        secondary: '#C850C0',
+                        accent: '#FFCC70',
+                        dark: '#2D3748',
+                        light: '#F7FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .transition-all-300 {
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+    <style>
+        body {
+            background-image: url('background.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            color: #333;
+        }
+    </style>
+</head>
+<body class="font-sans text-light">
+    <!-- 音乐播放器 -->
+    <audio id="backgroundMusic" loop>
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 音乐控制按钮 -->
+    <div class="music-control">
+        <div class="music-btn" id="musicToggle">
+            <i class="fa fa-volume-up text-2xl"></i>
+        </div>
+    </div>
+
+
+
+    <!-- 首页 -->
+    <section id="home" class="py-16 flex items-center justify-center">
+        <div class="container mx-auto px-4 text-center animate-fade-in">
+            <h1 class="text-6xl md:text-8xl font-bold mb-4 text-gray-900">上海市进才中学北校昆曲团</h1>
+            <p class="text-xl md:text-2xl mb-0 max-w-3xl mx-auto text-black">
+                上海市进才中学北校昆曲团成立于2019年9月，现有团员36 人，是学校重点打造的戏曲美育特色社团，以“昆韵润心田，经典共传承”为核心理念，深耕昆曲文化传承，是浦东新区昆曲“一条龙”项目建设核心学校。
+            </p>
+        </div>
+    </section>
+
+    <!-- 社团介绍 -->
+    <section id="about" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">赛事佳绩</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg leading-relaxed text-black">
+                        2020.12 第十六届区级学生艺术节 昆曲 《牡丹亭·游园》二等奖
+                    </p>
+                    <p class="text-1g leading-relaxed text-black">
+                        2021.06 新区第十七届学生艺术节 昆曲《牡丹亭·游园》【皂罗袍】一等奖
+                    </p>
+                    <p class="text-lg leading-relaxed text-black">
+                        2022.12 新区 第十八届学生艺术节 昆曲 二等奖
+                    </p>
+                    <p class="text-lg leading-relaxed text-black">
+                        2023.06 第十九届区级学生艺术节  昆曲《孽海记 思凡》 二等奖
+                    </p>
+                    <p class="text-lg leading-relaxed text-black">
+                        2024.06 第二十届区级学生艺术节  昆曲《牡丹亭·游园》【步步娇】 一等奖
+                    </p>
+                    <p class="text-lg leading-relaxed text-black">
+                        2025.06 新区第二十一届区级学生艺术节  昆曲《红梨记·亭会【风入松】》 一等奖
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                        <img src="jiang (1).jpg"
+                             alt="奖状照片1" class="w-full h-auto">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                        <img src="jiang (2).jpg"
+                             alt="奖状照片2" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="teachandBaoZhang" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">教学与保障&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文化传承与发展</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center justify-center text-center">
+                <!-- 文字居中：添加 text-center -->
+                <p class="text-xl md:text-2xl mb-0 max-w-3xl mx-auto text-black text-center">
+                    昆曲课程纳入学校美育体系，实施分层教学与每周固定规范化训练，运用数字平台、AI 辅助教学赋能课堂，通过“以赛代练、以演促学”提升专业能力；学校配备专用排练教室、表演场地及专业音影设备，昆曲专项经费累计投入 30 万余元，专款用于师资聘请、服装道具、赛事组织等，组织、经费、硬件全方位保障团队发展。
+                </p>
+                <p class="text-xl md:text-2xl mb-0 max-w-3xl mx-auto text-black text-center">
+                    积极参与昆曲文化交流与展演，登上昆曲入选世界非遗 20 周年纪念庆典、上海教育电视台专访等市级平台，与高校、专业院团开展深度交流；作为昆曲特色校，与进才中学建立特长生衔接培养机制，定期开展 “昆曲名家进校园”“昆曲文化开放日” 等公益活动，辐射带动区域昆曲文化传播与美育发展。未来将持续打磨经典剧目、开发校本课程，探索昆曲与多学科融合，打造校园昆曲文化品牌。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 老师介绍 -->
+    <section id="teacher" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">老师介绍</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105">
+                    <img src="teacher1.jpg"
+                         alt="老师照片" class="w-full h-auto">
+                </div>
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-accent">指导老师</h3>
+                    <p class="text-lg leading-relaxed text-black">
+                        构建校内骨干+校外名家双师教学体系，校内由声乐专业、具备戏曲教学经验的龚裕玲、徐彦黎老师领衔，徐彦黎老师深耕戏曲教学，获上海市戏曲微课、美育实践魅力教师等多项荣誉；校外聘请上海昆剧院国家二级演员甘春蔚、张頲（均攻闺门旦、花旦兼正旦）专业指导，学校为“谷好好名师基地”单位，专业教学资源优质。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精彩照片 -->
+    <section id="photos" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">精彩照片</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="photo-card rounded-lg overflow-hidden shadow-lg">
+                    <img src="pic (1).jpg"
+                         alt="精彩照片1" class="w-full h-64 object-cover">
+                    <div class="photo-overlay">
+                        <i class="fa fa-search-plus text-4xl"></i>
+                    </div>
+                </div>
+                <div class="photo-card rounded-lg overflow-hidden shadow-lg">
+                    <img src="pic (2).jpg"
+                         alt="精彩照片2" class="w-full h-64 object-cover">
+                    <div class="photo-overlay">
+                        <i class="fa fa-search-plus text-4xl"></i>
+                    </div>
+                </div>
+                <div class="photo-card rounded-lg overflow-hidden shadow-lg">
+                    <img src="pic (3).jpg"
+                         alt="精彩照片3" class="w-full h-64 object-cover">
+                    <div class="photo-overlay">
+                        <i class="fa fa-search-plus text-4xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">介绍视频</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="video-box">
+                    <video width="800" controls>
+                        <source src="about.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 section">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">演出视频</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="video-box">
+                    <video width="800" controls poster="cover1.png">
+                        <source src="show1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-box">
+                    <video width="800" controls>
+                        <source src="show2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-box">
+                    <video width="800" controls poster="cover3.png">
+                        <source src="show3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-box">
+                    <video width="800" controls poster="cover4.png">
+                        <source src="show4.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-8 bg-white bg-opacity-90">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4 text-gray-700">2025级初一19班郭宸好制作。保留全部权力。已经成功激活本产品。</p>
+            <a href="../index.html"
+               class="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xl py-4 px-6 rounded-xl shadow-lg hover:scale-105 transition-all">
+                返回
+            </a>
+        </div>
+    </footer>
+
+    <!-- 图片查看模态框 -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function () {
+
+
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+
+                        // 如果是移动端，点击后关闭菜单
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+
+            // 滚动显示动画
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // 图片查看功能
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalClose = document.querySelector('.modal-close');
+            const photoCards = document.querySelectorAll('.photo-card');
+
+            photoCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const imgSrc = this.querySelector('img').src;
+                    modal.style.display = 'flex';
+                    modalImg.src = imgSrc;
+                    document.body.style.overflow = 'hidden'; // 防止背景滚动
+                });
+            });
+
+            modalClose.addEventListener('click', function () {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // 恢复背景滚动
+            });
+
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // 音乐控制
+            const music = document.getElementById('backgroundMusic');
+            const musicToggle = document.getElementById('musicToggle');
+            const musicIcon = musicToggle.querySelector('i');
+
+            // 检查用户是否之前有设置过音乐偏好
+            const musicPreference = localStorage.getItem('musicPreference');
+            if (musicPreference === 'true') {
+                music.play().catch(e => console.log('无法自动播放音乐:', e));
+                musicIcon.classList.remove('fa-volume-off');
+                musicIcon.classList.add('fa-volume-up');
+            } else {
+                musicIcon.classList.remove('fa-volume-up');
+                musicIcon.classList.add('fa-volume-off');
+            }
+
+            musicToggle.addEventListener('click', function () {
+                if (music.paused) {
+                    music.play().catch(e => console.log('无法播放音乐:', e));
+                    musicIcon.classList.remove('fa-volume-off');
+                    musicIcon.classList.add('fa-volume-up');
+                    localStorage.setItem('musicPreference', 'true');
+                } else {
+                    music.pause();
+                    musicIcon.classList.remove('fa-volume-up');
+                    musicIcon.classList.add('fa-volume-off');
+                    localStorage.setItem('musicPreference', 'false');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+{
+ "version": "auto-py-to-exe-configuration_v1",
+ "pyinstallerOptions": [
+  {
+   "optionDest": "noconfirm",
+   "value": true
+  },
+  {
+   "optionDest": "filenames",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/app.py"
+  },
+  {
+   "optionDest": "onefile",
+   "value": true
+  },
+  {
+   "optionDest": "console",
+   "value": false
+  },
+  {
+   "optionDest": "icon_file",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/ico.ico"
+  },
+  {
+   "optionDest": "clean_build",
+   "value": false
+  },
+  {
+   "optionDest": "strip",
+   "value": false
+  },
+  {
+   "optionDest": "noupx",
+   "value": false
+  },
+  {
+   "optionDest": "disable_windowed_traceback",
+   "value": false
+  },
+  {
+   "optionDest": "uac_admin",
+   "value": false
+  },
+  {
+   "optionDest": "uac_uiaccess",
+   "value": false
+  },
+  {
+   "optionDest": "argv_emulation",
+   "value": false
+  },
+  {
+   "optionDest": "bootloader_ignore_signals",
+   "value": false
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/background.mp3;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/background.mp4;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/errorbackhome.html;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/ico.ico;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/ico.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/index.html;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/justerror.html;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/license.html;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/mainpage.js;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/more.html;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/outpage.html;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/script.html;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/style.css;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/about.mp4;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/background.jpg;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/background.mp3;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/cover2.png;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/cover3.png;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/font-awesome.min.css;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/index.html;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/jiang (1).jpg;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/jiang (2).jpg;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/pic (1).jpg;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/pic (2).jpg;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/pic (3).jpg;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/show1.mp4;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/show2.mp4;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/show3.mp4;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/teacher1.jpg;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/heChang/teacher2.jpg;heChang/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/about.mp4;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/background.mp3;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/background.png;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/cover1.png;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/cover3.png;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/cover4.png;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/index.html;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/jiang (1).jpg;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/jiang (2).jpg;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/pic (1).jpg;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/pic (2).jpg;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/pic (3).jpg;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/show1.mp4;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/show2.mp4;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/show3.mp4;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/show4.mp4;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/kunQu/teacher1.jpg;kunQu/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue/about.mp4;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue/background.mp3;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue/background.png;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue/cover4.png;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue/index.html;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue/jiang (1).jpg;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue/pic (1).jpg;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue/pic (2).jpg;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue/pic (3).jpg;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue/show2.mp4;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue/show3.mp4;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue/show4.mp4;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/xianYue/teacher1.jpg;xianYue/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/about;about/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/about/index.html;about/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/settings;settings/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/settings/changelog.html;settings/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/settings/home.png;settings/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/settings/set_changelog.html;settings/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/settings/setting.svg;settings/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/settings/settings.html;settings/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/settings/skip_ngrok.html;settings/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/settings/txt.png;settings/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/settings/update.html;settings/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/settings/update.png;settings/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/Admin/Desktop/\u65b0\u5efa\u6587\u4ef6\u5939/settings/updatepage.html;settings/"
+  }
+ ],
+ "nonPyinstallerOptions": {
+  "increaseRecursionLimit": true,
+  "manualArguments": ""
+ }
+}
