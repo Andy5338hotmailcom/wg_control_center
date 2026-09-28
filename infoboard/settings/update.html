@@ -72,6 +72,18 @@
         .error{
             color:#993300;
         }
+        button {
+            padding: 8px 16px;
+            border: none;
+            background-color: #007aff;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size:15px;
+        }
+        button:hover {
+            background-color: #0066dd;
+        }
     </style>
 </head>
 <body>
@@ -109,11 +121,11 @@
         </div>
     </div>
 </div>
-
 <script>
 // ========== 这里修改你的变量 ==========
 const localVersion = "17.1.1";
 const checkLineIndex = 4; // 获取第2或4行，行号从1开始
+const downloadUrlLineIndex = 8; // 更新包下载链接在远端txt第8行
 const remoteUrl = "https://andy5338hotmailcom.github.io/appsdowlandpagesandupdate/update/infoboard/checkupdate.txt";
 const statusDom = document.getElementById("statusText");
 async function checkUpdate(){
@@ -124,8 +136,11 @@ async function checkUpdate(){
         }
         const text = await resp.text();
         const lines = text.split(/\r?\n/);
-        // 取第N行，数组下标要减1
+        // 取版本号
         const remoteVer = (lines[checkLineIndex -1] || "").trim();
+        // 取下载地址
+        const downloadUrl = (lines[downloadUrlLineIndex -1] || "").trim();
+
         if(remoteVer === localVersion){
             statusDom.innerHTML = `
                 <div class="latest">✅ 你是最新版本</div>
@@ -136,7 +151,19 @@ async function checkUpdate(){
                 <div class="need-update">⚠️ 需要更新</div>
                 <div>当前版本：${localVersion}</div>
                 <div>最新版本：${remoteVer}</div>
+                <div style="margin-top:24px;">
+                    <button id="btnDownload">下载更新</button>
+                </div>
             `;
+            setTimeout(()=>{
+                document.getElementById("btnDownload").onclick = function(){
+                    if(!downloadUrl){
+                        alert("未获取到更新包链接");
+                        return;
+                    }
+                    console.log("点击下载更新，远端版本：", remoteVer, "下载地址：", downloadUrl);
+                }
+            },0);
         }
     }catch(err){
         statusDom.innerHTML = `
