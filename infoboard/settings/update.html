@@ -47,13 +47,12 @@
             padding: 40px;
             overflow: auto;
         }
-        /* 内嵌更新面板样式，原updatepage */
         .container{
             max-width:520px;
             background:#f5f7fa;
             padding:28px;
             border-radius:12px;
-            box-shadow: 0 2px 14px rgba(0,0,0.1);
+            box-shadow: 0 2px 14px rgba(0,0,0,0.1);
         }
         .status{
             margin-top:20px;
@@ -124,18 +123,26 @@
 <script>
 // ========== 这里修改你的变量 ==========
 const localVersion = "18.1.1";
-const checkLineIndex = 4; // 获取第2或4行，行号从1开始
-const downloadUrlLineIndex = 8; // 更新包下载链接在远端txt第8行
+const checkLineIndex = 4; // 版本号行
+const downloadUrlCDNLineIndex = 8; // gh-proxy 主加速链接
+const downloadUrlBackupLineIndex = 9; // github release 备用链接
 const remoteUrl = "https://andy5338hotmailcom.github.io/appsdowlandpagesandupdate/update/infoboard/checkupdate.txt";
 const statusDom = document.getElementById("statusText");
 
-// 全局按钮回调
-function triggerDownload(url) {
-    if(!url){
+// 全局下载触发
+function triggerDownload(cdnUrl, backupUrl) {
+    if(!cdnUrl){
         alert("未获取到更新包链接");
         return;
     }
-    console.log("点击下载更新，下载地址：", url);
+    console.log("优先尝试GH-Proxy加速链接：", cdnUrl);
+    statusDom.innerHTML += `<div style="margin-top:12px;color:#007aff;">正在从加速服务器下载更新包，若长时间无响应，可点击下方备用链接</div>
+    <div style="margin-top:8px;"><button onclick="window.open('${backupUrl}')">使用备用Github源下载</button></div>`;
+    const a = document.createElement('a');
+    a.href = cdnUrl;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
 }
 
 async function checkUpdate(){
@@ -146,10 +153,10 @@ async function checkUpdate(){
         }
         const text = await resp.text();
         const lines = text.split(/\r?\n/);
-        // 取版本号
+        // 读取版本号、CDN主链接、备用github链接
         const remoteVer = (lines[checkLineIndex -1] || "").trim();
-        // 取下载地址
-        const downloadUrl = (lines[downloadUrlLineIndex -1] || "").trim();
+        const cdnDownloadUrl = (lines[downloadUrlCDNLineIndex -1] || "").trim();
+        const backupDownloadUrl = (lines[downloadUrlBackupLineIndex -1] || "").trim();
 
         if(remoteVer === localVersion){
             statusDom.innerHTML = `
@@ -162,15 +169,16 @@ async function checkUpdate(){
                 <div>当前版本：${localVersion}</div>
                 <div>最新版本：${remoteVer}</div>
                 <div style="margin-top:24px;">
-                    <button onclick="triggerDownload('${downloadUrl}')">下载更新</button>
+                    <button onclick="triggerDownload('${cdnDownloadUrl}','${backupDownloadUrl}')">下载更新</button>
                 </div>
             `;
         }
     }catch(err){
         statusDom.innerHTML = `
-            <div class="error">❌ 更新检查失败</div>
+            <div class="error">❌ 更新清单获取失败</div>
             <div>错误信息：${err.message}</div>
             <div>本地版本：${localVersion}</div>
+            <div>提示：无法连接更新清单，可手动复制备用链接下载</div>
         `;
     }
 }
