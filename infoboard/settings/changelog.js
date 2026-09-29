@@ -1,14 +1,11 @@
 // 更新日志数据（改版本只动这个文件）
 const changelogData = [
     {
-        version: "preview17.5.1",
-        date: "2026-09-27",
-        description: "社团添加+半周年",
+        version: "preview17.5",
+        date: "2026-09-29",
+        description: "更新更新!",
         changes: [
-            "添加了2个社团展板架构",
-            "目前可能404",
-            "终于半年了！",
-            "添加了一个彩蛋",
+            "添加了更新功能中下载更新包的功能",
             "备注：属于预览版本"
         ]
     },
