@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>检查更新</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", system-ui, Segoe UI, sans-serif;
+        }
+        body {
+            background: #fff;
+            color: #000;
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 220px;
+            background: #f5f5f5;
+            border-right: 1px solid #ddd;
+            padding: 20px 0;
+        }
+        .sidebar-item {
+            padding: 14px 20px;
+            cursor: pointer;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sidebar-item:hover {
+            background: #e8e8e8;
+        }
+        .sidebar-item.active {
+            background: #007aff;
+            color: #fff;
+        }
+        .sidebar-item img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+        .main {
+            flex: 1;
+            padding: 40px;
+            overflow: auto;
+        }
+        .container{
+            max-width:520px;
+            background:#f5f7fa;
+            padding:28px;
+            border-radius:12px;
+            box-shadow: 0 2px 14px rgba(0,0,0,0.1);
+        }
+        .status{
+            margin-top:20px;
+            font-size:16px;
+            line-height:1.8;
+        }
+        .loading{
+            color:#666;
+        }
+        .latest{
+            color:#008833;
+        }
+        .need-update{
+            color:#d03030;
+        }
+        .error{
+            color:#993300;
+        }
+        button {
+            padding: 8px 16px;
+            border: none;
+            background-color: #007aff;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size:15px;
+        }
+        button:hover {
+            background-color: #0066dd;
+        }
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <div class="sidebar-item">
+        <img src="setting.svg" alt="">
+        设置
+    </div>
+    <div class="sidebar-item" onclick="window.location.href='./set_changelog.html'">
+        <img src="txt.png" alt="">
+        更新日志
+    </div>
+    <div class="sidebar-item active">
+        <img src="update.png" alt="">
+        检查更新
+    </div>
+    <div class="sidebar-item" onclick="window.location.href='./set_license.html'">
+        <img src="txt.png" alt="">
+        许可条款
+    </div>
+    <div class="sidebar-item" onclick="window.location.href='./feedback.html'">
+        <img src="feedback.svg" alt="">
+        反馈和评价
+    </div>
+</div>
+<div class="main">
+    <div class="container">
+        <h2>检查更新--预览版本</h2>
+        <div class="status" id="statusText">
+            <div class="loading">正在请求更新服务器……</div>
+        </div>
+    </div>
+</div>
+<script>
+// ========== 这里修改你的变量 ==========
+const localVersion = "17.5";
+const checkLineIndex = 4; // 版本号行
+const downloadUrlCDNLineIndex = 8; // gh-proxy 主加速链接
+const downloadUrlBackupLineIndex = 9; // github release 备用链接
+const remoteUrl = "https://andy5338hotmailcom.github.io/appsdowlandpagesandupdate/update/infoboard/checkupdate.txt";
+const statusDom = document.getElementById("statusText");
+
+// 全局下载触发
+function triggerDownload(cdnUrl, backupUrl) {
+    if(!cdnUrl){
+        alert("未获取到更新包链接");
+        return;
+    }
+    console.log("优先尝试GH-Proxy加速链接：", cdnUrl);
+    statusDom.innerHTML += `<div style="margin-top:12px;color:#007aff;">正在从加速服务器下载更新包，若长时间无响应，可点击下方备用链接</div>
+    <div style="margin-top:8px;"><button onclick="window.open('${backupUrl}')">使用备用Github源下载</button></div>`;
+    const a = document.createElement('a');
+    a.href = cdnUrl;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+}
+
+async function checkUpdate(){
+    try{
+        const resp = await fetch(remoteUrl);
+        if(!resp.ok){
+            throw new Error(`HTTP ${resp.status}`);
+        }
+        const text = await resp.text();
+        const lines = text.split(/\r?\n/);
+        // 读取版本号、CDN主链接、备用github链接
+        const remoteVer = (lines[checkLineIndex -1] || "").trim();
+        const cdnDownloadUrl = (lines[downloadUrlCDNLineIndex -1] || "").trim();
+        const backupDownloadUrl = (lines[downloadUrlBackupLineIndex -1] || "").trim();
+
+        if(remoteVer === localVersion){
+            statusDom.innerHTML = `
+                <div class="latest">✅ 你是最新版本</div>
+                <div>当前版本：${localVersion}</div>
+            `;
+        }else{
+            statusDom.innerHTML = `
+                <div class="need-update">⚠️ 需要更新</div>
+                <div>当前版本：${localVersion}</div>
+                <div>最新版本：${remoteVer}</div>
+                <div style="margin-top:24px;">
+                    <button onclick="triggerDownload('${cdnDownloadUrl}','${backupDownloadUrl}')">下载更新</button>
+                </div>
+            `;
+        }
+    }catch(err){
+        statusDom.innerHTML = `
+            <div class="error">❌ 更新清单获取失败</div>
+            <div>错误信息：${err.message}</div>
+            <div>本地版本：${localVersion}</div>
+            <div>提示：无法连接更新清单，可手动复制备用链接下载</div>
+        `;
+    }
+}
+// 页面加载立刻执行
+checkUpdate();
+</script>
+</body>
+</html>

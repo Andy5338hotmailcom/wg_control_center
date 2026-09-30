@@ -17,10 +17,16 @@ window.productConfig = {
             installUrl: "http://127.0.0.1:8550/install.html"
         },
         {
-            name: "大雁系统",
+            name: "彩蛋",
             port: 8551,
             indexUrl: "http://127.0.0.1:8551/index.html",
             installUrl: "http://127.0.0.1:8551/setup/index.html"
+        },
+        {
+            name: "设置",
+            port: 8552,
+            indexUrl: "http://127.0.0.1:8552/settings.html",
+            installUrl: "http://127.0.0.1:8550/justerror.html?code=404&why=设置只能在控制台使用，本版本还不支持安装为独立软件。"
         }
     ]
 }
