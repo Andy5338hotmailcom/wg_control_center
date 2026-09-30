@@ -1,0 +1,1 @@
+taskkill -im wg_app_flask.exe /F

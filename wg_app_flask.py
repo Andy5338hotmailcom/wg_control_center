@@ -46,7 +46,7 @@ def run_main_system():
 
     app2.run(host="127.0.0.1", port=8549, debug=False)
 
-# ====================== 服务2：main主系统 端口8549 ======================
+# ====================== 服务3：wg系统 端口8551 ======================
 def run_sys_system():
     base = str(BASE / "./wgsys")
     # 完全沿用你写的模板
@@ -63,6 +63,23 @@ def run_sys_system():
 
     app2.run(host="127.0.0.1", port=8551, debug=False)
 
+# ====================== 服务3：settings 端口8552 ======================
+def run_settings():
+    base = str(BASE / "./settings")
+    # 完全沿用你写的模板
+    app2 = Flask(
+        __name__,
+        static_folder=base,
+        static_url_path="/"
+    )
+    CORS(app2)
+
+    @app2.route('/ping')
+    def ping():
+        return "ok"
+
+    app2.run(host="127.0.0.1", port=8552, debug=False)
+
 # -------------------------- 主入口 --------------------------
 if __name__ == "__main__":
     freeze_support()
@@ -70,19 +87,23 @@ if __name__ == "__main__":
     p1 = Process(target=run_infoboard)
     p2 = Process(target=run_main_system)
     p3 = Process(target=run_sys_system)
+    p4 = Process(target=run_settings)
 
     print("✅ Infoboard: http://127.0.0.1:8550")
     print("✅ Main系统: http://127.0.0.1:8549")
     print("✅ Wildgoose BE-S系统: http://127.0.0.1:8551")
+    print("✅ 设置: http://127.0.0.1:8552")
 
     p1.start()
     p2.start()
     p3.start()
+    p4.start()
 
     try:
         p1.join()
         p2.join()
         p3.join()
+        p4.join()
     except KeyboardInterrupt:
         print("\n🛑 收到关闭信号")
     finally:
@@ -92,3 +113,5 @@ if __name__ == "__main__":
             p2.terminate()
         if p3.is_alive():
             p3.terminate()
+        if p4.is_alive():
+            p4.terminate()
