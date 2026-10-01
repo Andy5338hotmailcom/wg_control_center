@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初始化</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        .logo {
+            max-width: 200px;
+            max-height: 200px;
+            margin-bottom: 24px;
+        }
+        .text {
+            font-size: 18px;
+            color: #333333;
+            margin-bottom:12px;
+        }
+        .tip{
+            font-size:14px;
+            color:#666;
+            margin-bottom:24px;
+        }
+        .err-text{
+            color:#c82423;
+            font-size:14px;
+            display:none;
+            text-align:center;
+            padding:0 20px;
+        }
+        button{
+            margin-top:12px;
+            padding:6px 16px;
+            border:1px solid #999;
+            background:#fff;
+            border-radius:4px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <img src="setting.svg" alt="Logo" class="logo">
+    <div class="text">设置</div>
+    <div class="tip">正在启动后台服务，请稍候…</div>
+
+    <div class="err-text" id="errBox">
+        后台服务启动失败，请手动运行 wg_app_flask.exe
+        <br>
+        <button onclick="retryCheck()">重试</button>
+    </div>
+
+<script>
+const BACKEND_URL = "http://127.0.0.1:8552";
+const TARGET_PAGE = "/settings.html";
+let retryCount = 0;
+const MAX_RETRY = 25;
+
+async function checkService(){
+    try{
+        // 删掉 mode:"no‑cors"
+        const res = await fetch(`${BACKEND_URL}/ping`);
+        if(res.ok){
+            window.location.href = `${BACKEND_URL}${TARGET_PAGE}`;
+        }else{
+            throw new Error("not ok");
+        }
+    }catch(e){
+        retryCount++;
+        if(retryCount >= MAX_RETRY){
+            document.querySelector(".tip").style.display="none";
+            document.getElementById("errBox").style.display = "block";
+            return;
+        }
+        setTimeout(checkService, 800);
+    }
+}
+
+function retryCheck(){
+    retryCount = 0;
+    document.querySelector(".tip").style.display="block";
+    document.getElementById("errBox").style.display = "none";
+    checkService();
+}
+
+checkService();
+</script>
+
+</body>
+</html>
