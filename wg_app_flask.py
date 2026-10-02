@@ -105,16 +105,19 @@ if __name__ == "__main__":
     p2 = Process(target=run_main_system)
     p3 = Process(target=run_sys_system)
     p4 = Process(target=run_settings)
+    p5 = Process(target=run_school_map)
 
     print("✅ Infoboard: http://127.0.0.1:8550")
     print("✅ Main系统: http://127.0.0.1:8549")
     print("✅ Wildgoose BE-S系统: http://127.0.0.1:8551")
     print("✅ 设置: http://127.0.0.1:8552")
+    print("✅ 学校地图: http://127.0.0.1:8553")
 
     p1.start()
     p2.start()
     p3.start()
     p4.start()
+    p5.start()
 
     try:
         p1.join()
