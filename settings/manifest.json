@@ -1,6 +1,6 @@
 {
-  "name":"设置",
-  "short_name":"设置",
+  "name":"艺术社团展板设置",
+  "short_name":"艺术社团展板设置",
   "start_url":"/launch.html",
   "version": "1.1.0",
   "display":"standalone",
