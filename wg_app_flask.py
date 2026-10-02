@@ -80,6 +80,23 @@ def run_settings():
 
     app2.run(host="127.0.0.1", port=8552, debug=False)
 
+# ====================== 服务4：school map 端口8553 ======================
+def run_school_map():
+    base = str(BASE / "./map")
+    # 完全沿用你写的模板
+    app2 = Flask(
+        __name__,
+        static_folder=base,
+        static_url_path="/"
+    )
+    CORS(app2)
+
+    @app2.route('/ping')
+    def ping():
+        return "ok"
+
+    app2.run(host="127.0.0.1", port=8553, debug=False)
+
 # -------------------------- 主入口 --------------------------
 if __name__ == "__main__":
     freeze_support()
