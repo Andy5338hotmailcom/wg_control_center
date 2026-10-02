@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1楼</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", system-ui, sans-serif;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: url("bg.jpg") no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap:32px;
+        }
+        .text {
+            font-size:40px;
+            color:#fff;
+            text-shadow:0 2px 8px #00000070;
+        }
+        .back-btn {
+            padding: 12px 28px;
+            font-size: 18px;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 14px;
+            cursor: pointer;
+            backdrop-filter: blur(12px) saturate(140%);
+            -webkit-backdrop-filter: blur(12px) saturate(140%);
+            background: rgba(91, 76, 219, 0.35);
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transition: 0.25s ease;
+        }
+        .back-btn:hover {
+            background: rgba(91, 76, 219, 0.55);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="text">敬请期待</div>
+    <button class="back-btn" onclick="location.href='index.html'">返回导览首页</button>
+</body>
+</html>
