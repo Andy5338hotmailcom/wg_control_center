@@ -26,7 +26,7 @@ window.productConfig = {
             name: "设置",
             port: 8552,
             indexUrl: "http://127.0.0.1:8552/settings.html",
-            installUrl: "http://127.0.0.1:8550/justerror.html?code=404&why=设置只能在控制台使用，本版本还不支持安装为独立软件。"
+            installUrl: "http://127.0.0.1:8552/install.html"
         }
     ]
 }
