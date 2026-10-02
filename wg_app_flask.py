@@ -124,6 +124,7 @@ if __name__ == "__main__":
         p2.join()
         p3.join()
         p4.join()
+        p5.join()
     except KeyboardInterrupt:
         print("\n🛑 收到关闭信号")
     finally:
@@ -135,3 +136,5 @@ if __name__ == "__main__":
             p3.terminate()
         if p4.is_alive():
             p4.terminate()
+        if p5.is_alive():
+            p5.terminate()
