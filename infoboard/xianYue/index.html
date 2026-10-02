@@ -21,7 +21,7 @@
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
                     },
-                        animation: {
+                    animation: {
                         'fade-in': 'fadeIn 1s ease-in-out',
                         'slide-up': 'slideUp 0.8s ease-out',
                         'pulse-slow': 'pulse 3s infinite',
@@ -63,16 +63,12 @@
     <audio id="backgroundMusic" loop>
         <source src="background.mp3" type="audio/mpeg">
     </audio>
-
     <!-- 音乐控制按钮 -->
     <div class="music-control">
         <div class="music-btn" id="musicToggle">
             <i class="fa fa-volume-up text-2xl"></i>
         </div>
     </div>
-
-
-
     <!-- 首页 -->
     <section id="home" class="py-16 flex items-center justify-center">
         <div class="container mx-auto px-4 text-center animate-fade-in">
@@ -85,7 +81,6 @@
             </p>
         </div>
     </section>
-
     <!-- 社团介绍 -->
     <section id="about" class="py-20 section">
         <div class="container mx-auto px-4">
@@ -95,7 +90,7 @@
                     <p class="text-lg leading-relaxed text-black">
                         2023年浦东新区第十九届学生艺术节艺术展演活动/西乐专场(合奏) 初中组一等奖
                     </p>
-                    <p class="text-1g leading-relaxed text-black">
+                    <p class="text-lg leading-relaxed text-black">
                         2024年浦东新区第二十届学生艺术节艺术展演活动/西乐专场(合奏) 初中组一等奖
                     </p>
                     <p class="text-lg leading-relaxed text-black">
@@ -111,7 +106,6 @@
             </div>
         </div>
     </section>
-
     <!-- 精彩照片 -->
     <section id="photos" class="py-20 section">
         <div class="container mx-auto px-4">
@@ -141,7 +135,6 @@
             </div>
         </div>
     </section>
-
     <section id="about" class="py-20 section">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">介绍视频</h2>
@@ -154,7 +147,6 @@
             </div>
         </div>
     </section>
-
     <section id="about" class="py-20 section">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold mb-12 text-center text-shadow text-black">演出视频</h2>
@@ -177,28 +169,35 @@
             </div>
         </div>
     </section>
-
     <!-- 页脚 -->
     <footer class="py-8 bg-white bg-opacity-90">
         <div class="container mx-auto px-4 text-center">
             <p class="mb-4 text-gray-700">2025级初一19班郭宸好制作。保留全部权力。已经成功激活本产品。</p>
-            <a href="../index.html"
-               class="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xl py-4 px-6 rounded-xl shadow-lg hover:scale-105 transition-all">
+            <button id="backBtn" class="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xl py-4 px-6 rounded-xl shadow-lg hover:scale-105 transition-all">
                 返回
-            </a>
+            </button>
         </div>
     </footer>
-
     <!-- 图片查看模态框 -->
     <div id="imageModal" class="modal">
         <span class="modal-close">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
-
     <script>
+        // 获取url参数
+        function getUrlParam(name) {
+            const searchParams = new URLSearchParams(window.location.search);
+            return searchParams.get(name);
+        }
+        // 读取back参数，没有就用默认地址
+        const backUrl = getUrlParam("back") || "../index.html";
+
         // 页面加载完成后执行
         document.addEventListener('DOMContentLoaded', function () {
-
+            // 返回按钮点击事件
+            document.getElementById("backBtn").addEventListener("click", function(){
+                location.href = backUrl;
+            });
 
             // 平滑滚动
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -206,13 +205,11 @@
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
-
                     if (targetElement) {
                         window.scrollTo({
                             top: targetElement.offsetTop - 80,
                             behavior: 'smooth'
                         });
-
                         // 如果是移动端，点击后关闭菜单
                         if (!mobileMenu.classList.contains('hidden')) {
                             mobileMenu.classList.add('hidden');
@@ -220,7 +217,6 @@
                     }
                 });
             });
-
             // 滚动显示动画
             const sections = document.querySelectorAll('.section');
             const observer = new IntersectionObserver((entries) => {
@@ -230,17 +226,14 @@
                     }
                 });
             }, { threshold: 0.1 });
-
             sections.forEach(section => {
                 observer.observe(section);
             });
-
             // 图片查看功能
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
             const modalClose = document.querySelector('.modal-close');
             const photoCards = document.querySelectorAll('.photo-card');
-
             photoCards.forEach(card => {
                 card.addEventListener('click', function () {
                     const imgSrc = this.querySelector('img').src;
@@ -249,26 +242,20 @@
                     document.body.style.overflow = 'hidden'; // 防止背景滚动
                 });
             });
-
             modalClose.addEventListener('click', function () {
                 modal.style.display = 'none';
                 document.body.style.overflow = 'auto'; // 恢复背景滚动
             });
-
             modal.addEventListener('click', function (e) {
                 if (e.target === modal) {
                     modal.style.display = 'none';
                     document.body.style.overflow = 'auto';
                 }
             });
-
-            
-            
             // 音乐控制
             const music = document.getElementById('backgroundMusic');
             const musicToggle = document.getElementById('musicToggle');
             const musicIcon = musicToggle.querySelector('i');
-
             // 检查用户是否之前有设置过音乐偏好
             const musicPreference = localStorage.getItem('musicPreference');
             if (musicPreference === 'true') {
@@ -279,7 +266,6 @@
                 musicIcon.classList.remove('fa-volume-up');
                 musicIcon.classList.add('fa-volume-off');
             }
-
             musicToggle.addEventListener('click', function () {
                 if (music.paused) {
                     music.play().catch(e => console.log('无法播放音乐:', e));
