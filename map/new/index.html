@@ -33,7 +33,7 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-        /* 磨砂按钮通用 */
+        /* 磨砂楼层按钮 */
         .frosted-btn {
             padding: 16px 32px;
             font-size: 20px;
@@ -56,6 +56,27 @@
                 0 12px 30px rgba(0, 0, 0, 0.35),
                 inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
+        /* 返回按钮，和5.html样式完全一致 */
+        .back-btn {
+            margin-top:20px;
+            padding: 12px 28px;
+            font-size: 18px;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 14px;
+            cursor: pointer;
+            backdrop-filter: blur(12px) saturate(140%);
+            -webkit-backdrop-filter: blur(12px) saturate(140%);
+            background: rgba(91, 76, 219, 0.35);
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transition: 0.25s ease;
+        }
+        .back-btn:hover {
+            background: rgba(91, 76, 219, 0.55);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -67,5 +88,7 @@
         <button class="frosted-btn" onclick="location.href='4.html'">4楼</button>
         <button class="frosted-btn" onclick="location.href='5.html'">5楼</button>
     </div>
+    <!-- 返回首页按钮，跳转 ../index.html -->
+    <button class="back-btn" onclick="location.href='../index.html'">返回首页</button>
 </body>
 </html>
