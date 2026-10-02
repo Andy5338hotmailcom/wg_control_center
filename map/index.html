@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>楼层导览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", system-ui, sans-serif;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: url("bg.jpg") no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+        h1 {
+            color: #fff;
+            text-shadow: 0 2px 8px #00000070;
+            font-size: 42px;
+        }
+        .floor-wrap {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        /* 磨砂按钮通用 */
+        .frosted-btn {
+            padding: 16px 32px;
+            font-size: 20px;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 16px;
+            cursor: pointer;
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow:
+                0 8px 24px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transition: 0.25s ease;
+        }
+        .frosted-btn:hover {
+            background: rgba(255, 255, 255, 0.32);
+            transform: translateY(-3px);
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <h1>楼层导览</h1>
+    <div class="floor-wrap">
+        <button class="frosted-btn" onclick="location.href='1.html'">1楼</button>
+        <button class="frosted-btn" onclick="location.href='2.html'">2楼</button>
+        <button class="frosted-btn" onclick="location.href='3.html'">3楼</button>
+        <button class="frosted-btn" onclick="location.href='4.html'">4楼</button>
+        <button class="frosted-btn" onclick="location.href='5.html'">5楼</button>
+    </div>
+</body>
+</html>
