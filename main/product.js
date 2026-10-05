@@ -27,6 +27,12 @@ window.productConfig = {
             port: 8552,
             indexUrl: "http://127.0.0.1:8552/settings.html",
             installUrl: "http://127.0.0.1:8552/install.html"
+        },
+        {
+            name: "地图",
+            port: 8553,
+            indexUrl: "http://127.0.0.1:8553/index.html",
+            installUrl: "http://127.0.0.1:8550/justerror.html?code=404&why=暂时不支持安装!"
         }
     ]
 }
