@@ -1,1 +1,0 @@
-"Z:\fastgithub-win-x64\FastGithub.UI.exe"
