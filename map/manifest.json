@@ -1,0 +1,16 @@
+{
+  "name":"艺术社团展板地图",
+  "short_name":"艺术社团展板地图",
+  "start_url":"/index.html",
+  "version": "1.1.1",
+  "display":"standalone",
+  "background_color":"#ffffff",
+  "theme_color":"#C8BFE7",
+  "icons":[
+    {
+        "src":"./ico.png",
+        "sizes":"150x150",
+        "type":"image/png"
+    }
+  ]
+}
